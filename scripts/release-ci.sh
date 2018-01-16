@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
-	echo "$TRAVIS_BRANCH" | grep "^[0-9]\{1,3\}\.[0-9]\{1,3\}$" > /dev/null
+	echo "$TRAVIS_BRANCH" | grep "^[0-9]\{1,3\}\.[0-9]\{1,3\}\(-dev\)\?$" > /dev/null
 	MAJOR=$?
 	VERSION=$(cat package.json | grep "version" | sed 's/"version": "\(.*\)",/\1/' | sed 's/[[:space:]]//g')
 	VERSION_NUM=$(echo $VERSION | sed 's/[^0-9\./\]//g')
